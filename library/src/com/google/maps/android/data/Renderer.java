@@ -364,7 +364,7 @@ public class Renderer {
             } else if (mapObject instanceof Polygon) {
                 ((Polygon) mapObject).remove();
             } else if (mapObject instanceof Collection) {
-                removeFeatures(mapObject);
+                removeFeatures((Collection<Object>) mapObject);
             }
         }
     }
