@@ -351,13 +351,20 @@ public class Renderer {
      */
     protected static void removeFeatures(HashMap<Feature, Object> features) {
         // Remove map object from the map
-        for (Object mapObject : features.values()) {
+        removeFeatures(features.values());
+    }
+
+    protected static void removeFeatures(Collection<Object> features) {
+        // Remove map object from the map
+        for (Object mapObject : features) {
             if (mapObject instanceof Marker) {
                 ((Marker) mapObject).remove();
             } else if (mapObject instanceof Polyline) {
                 ((Polyline) mapObject).remove();
             } else if (mapObject instanceof Polygon) {
                 ((Polygon) mapObject).remove();
+            } else if (mapObject instanceof Collection) {
+                removeFeatures(mapObject);
             }
         }
     }
